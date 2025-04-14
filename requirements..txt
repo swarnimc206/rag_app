@@ -1,5 +1,5 @@
 streamlit
-pypdf>=4.0.0  # New package name
+pypdf>=4.0.0
 langchain
 langchain-google-genai
 google-generativeai
