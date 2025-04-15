@@ -13,7 +13,8 @@ import traceback
 
 # Load environment variables
 load_dotenv()
-google_api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+
 if not google_api_key:
     st.error("GOOGLE_API_KEY not found in environment variables")
     st.stop()
