@@ -1,5 +1,8 @@
+#without rag
+
+
 import streamlit as st
-from pypdf import PdfReader  # New package name
+from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
@@ -13,8 +16,7 @@ import traceback
 
 # Load environment variables
 load_dotenv()
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-
+google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
     st.error("GOOGLE_API_KEY not found in environment variables")
     st.stop()
@@ -112,8 +114,8 @@ def user_input(user_question):
         st.error("Please try again or upload your documents once more.")
 
 def main():
-    st.set_page_config("Chat PDF", page_icon="📄")
-    st.header("Chat with PDF using Gemini 💁")
+    #st.set_page_config("Chat PDF", page_icon="📄")
+    st.header("Q and A with PDF💁")
     
     # Warning about dangerous deserialization
     st.warning(
